@@ -1,0 +1,73 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[danish]{babel}
+
+\usepackage[a4paper,width=150mm,top=30mm,bottom=25mm,headheight=2cm]{geometry}
+
+\usepackage[style=authoryear,autocite=inline]{biblatex}
+\bibliography{bib/references}
+
+\usepackage{lastpage}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{graphicx} % Import images
+\usepackage{wallpaper}
+\usepackage{pgfgantt} % Gantt Charts
+\usepackage{float}
+
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+
+\usepackage{color}
+
+\usepackage{listings} % Code highlight
+\definecolor{javared}{rgb}{0.6,0,0}
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35}
+\definecolor{javapurple}{rgb}{0.5,0,0.35}
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75}
+ 
+\lstset{language=Java,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{javapurple}\bfseries,
+    stringstyle=\color{javared},
+    commentstyle=\color{javagreen},
+    morecomment=[s][\color{javadocblue}]{/**}{*/},
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    stepnumber=1,
+    numbersep=10pt,
+    tabsize=4,
+    showspaces=false,
+    showstringspaces=false,
+    breaklines=true,
+}
+
+% Header style
+\usepackage{fancyhdr}
+
+
+\pagestyle{header-footer}
+
+\makeatletter
+\renewcommand\chapter{
+    \if @openright
+        \cleardoublepage
+    \else
+        \clearpage
+    \fi
+
+    \thispagestyle{header-footer}
+
+    \global\@topnum\z@
+    \@afterindentfalse
+    \secdef\@chapter\@schapter
+}
+\makeatother
+
+\usepackage{titlesec}
+\definecolor{dtured}{cmyk}{0,.91,.72,.23}
+\newcommand{\hsp}{\hspace{10pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{dtured}{|}\hsp}{0pt}{\Huge\bfseries}
